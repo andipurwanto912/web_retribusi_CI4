@@ -13,6 +13,6 @@
                     <span>My Profile</span></a></li>
             <!-- edit profile -->
             <li class=""><a class="nav-link" href="#"><i class="fas fa-user-edit"></i>
-                    <span>My Profile</span></a></li>
+                    <span>Edit Profile</span></a></li>
     </aside>
 </div>

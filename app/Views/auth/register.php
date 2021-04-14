@@ -12,41 +12,38 @@
 
                         <div class="card card-primary">
                             <div class="card-header">
-                                <h4>Register</h4>
+                                <h4><?= lang('Auth.register') ?></h4>
                             </div>
 
                             <div class="card-body">
-                                <form method="POST">
+                                <?= view('Myth\Auth\Views\_message_block') ?>
+                                <form action="<?= route_to('register') ?>" method="post">
+                                    <?= csrf_field() ?>
                                     <div class="form-group">
-                                        <label for="username">username</label>
-                                        <input id="username" type="text" class="form-control" name="username" placeholder="">
-                                        <div class="invalid-feedback">
-                                        </div>
+                                        <label for="username"><?= lang('Auth.username') ?></label>
+                                        <input id="username" type="text" class="form-control <?php if (session('errors.username')) : ?>is-invalid<?php endif ?>" name="username" placeholder="<?= lang('Auth.username') ?>" value="<?= old('username') ?>">
                                     </div>
                                     <div class="form-group">
-                                        <label for="email">Email</label>
-                                        <input id="email" type="email" class="form-control" name="email" placeholder="">
-                                        <div class="invalid-feedback">
-                                        </div>
+                                        <label for="email"><?= lang('Auth.email') ?></label>
+                                        <input id="email" type="email" class="form-control <?php if (session('errors.email')) : ?>is-invalid<?php endif ?>" name="email" placeholder="<?= lang('Auth.email') ?>" value="<?= old('email') ?>">
                                     </div>
                                     <div class="row">
                                         <div class="form-group col-6">
-                                            <label for="password" class="d-block">Password</label>
-                                            <input id="password" type="password" class="form-control pwstrength" data-indicator="pwindicator" placeholder="" name="password">
-                                            <div id="pwindicator" class="pwindicator">
-                                                <div class="bar"></div>
-                                                <div class="label"></div>
-                                            </div>
+                                            <label for="password"><?= lang('Auth.password') ?></label>
+                                            <input id="password" type="password" class="form-control pwstrength <?php if (session('errors.password')) : ?>is-invalid<?php endif ?>" data-indicator="pwindicator" name="password" placeholder="<?= lang('Auth.password') ?>" autocomplete="off">
                                         </div>
                                         <div class="form-group col-6">
-                                            <label for="password2" class="d-block">Password Confirmation</label>
-                                            <input id="password2" type="password" class="form-control" placeholder="" name="password-confirm">
+                                            <label for="pass_confirm"><?= lang('Auth.repeatPassword') ?></label>
+                                            <input id="password2" type="password" class="form-control <?php if (session('errors.pass_confirm')) : ?>is-invalid<?php endif ?>" name="pass_confirm" placeholder="<?= lang('Auth.repeatPassword') ?>" autocomplete="off">
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <button type="submit" class="btn btn-primary btn-lg btn-block">
-                                            Register
+                                            <?= lang('Auth.register') ?>
                                         </button>
+                                    </div>
+                                    <div class="mt-3 text-muted text-center">
+                                        <p>&larr;<?= lang('Auth.alreadyRegistered') ?> <a href="<?= route_to('login') ?>"><?= lang('Auth.signIn') ?></a></p>
                                     </div>
                                 </form>
                             </div>

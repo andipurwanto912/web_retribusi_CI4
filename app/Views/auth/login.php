@@ -13,40 +13,66 @@
                         </div>
                         <div class="card card-primary">
                             <div class="card-header">
-                                <h4>Login</h4>
+                                <h4><?= lang('Auth.loginTitle') ?></h4>
                             </div>
                             <div class="card-body">
-                                <form method="POST" action="#" class="needs-validation" novalidate="">
+                                <?= view('Myth\Auth\Views\_message_block') ?>
+
+                                <form action="<?= route_to('login') ?>" method="post">
+                                    <?= csrf_field() ?>
+                                    <?php if ($config->validFields === ['email']) : ?>
+                                        <div class="form-group">
+                                            <label for="login"><?= lang('Auth.email') ?></label>
+                                            <input type="email" class="form-control <?php if (session('errors.login')) : ?>is-invalid<?php endif ?>" name="login" placeholder="<?= lang('Auth.email') ?>">
+                                            <div class="invalid-feedback">
+                                                <?= session('errors.login') ?>
+                                            </div>
+                                        </div>
+
+                                    <?php else : ?>
+                                        <div class="form-group">
+                                            <label for="login"><?= lang('Auth.emailOrUsername') ?></label>
+                                            <input type="text" class="form-control <?php if (session('errors.login')) : ?>is-invalid<?php endif ?>" name="login" placeholder="<?= lang('Auth.emailOrUsername') ?>">
+                                            <div class="invalid-feedback">
+                                                <?= session('errors.login') ?>
+                                            </div>
+                                        </div>
+                                    <?php endif; ?>
+
                                     <div class="form-group">
-                                        <label for="email">Email</label>
-                                        <input id="email" type="email" class="form-control" name="email" tabindex="1" required autofocus>
+                                        <label for="password"><?= lang('Auth.password') ?></label>
+                                        <input type="password" name="password" class="form-control  <?php if (session('errors.password')) : ?>is-invalid<?php endif ?>" placeholder="<?= lang('Auth.password') ?>">
                                         <div class="invalid-feedback">
-                                            Please fill in your email
+                                            <?= session('errors.password') ?>
                                         </div>
                                     </div>
 
-                                    <div class="form-group">
-                                        <div class="d-block">
-                                            <label for="password" class="control-label">Password</label>
+                                    <?php if ($config->allowRemembering) : ?>
+                                        <div class="form-check">
+                                            <label class="form-check-label">
+                                                <input type="checkbox" name="remember" class="form-check-input" <?php if (old('remember')) : ?> checked <?php endif ?>>
+                                                <?= lang('Auth.rememberMe') ?>
+                                            </label>
                                         </div>
-                                        <input id="password" type="password" autofocus required class="form-control" name="password" tabindex="2" required>
-                                        <div class="invalid-feedback">
-                                            please fill in your password
-                                        </div>
-                                    </div>
+                                    <?php endif; ?>
+
                                     <div class="form-group">
-                                        <button type="submit" class="btn btn-primary btn-lg btn-block" tabindex="4">
-                                            Login
-                                        </button>
+                                        <button type="submit" class="btn btn-primary btn-block"><?= lang('Auth.loginAction') ?></button>
                                     </div>
-                                    <div class="mt-5 text-muted text-center">
-                                        Don't have an account? <a href="<?= base_url(); ?>">Create One</a>
+
+                                    <div class="mt-2 text-muted text-center">
+                                        <?php if ($config->activeResetter) : ?>
+                                            <p><a href="<?= route_to('forgot') ?>"><?= lang('Auth.forgotYourPassword') ?></a></p>
+                                        <?php endif; ?>
+                                        <?php if ($config->allowRegistration) : ?>
+                                            <p><a href="<?= route_to('register') ?>"><?= lang('Auth.needAnAccount') ?></a></p>
+                                        <?php endif; ?>
                                     </div>
                                 </form>
                             </div>
                         </div>
                         <div class="simple-footer">
-                            Copyright &copy; Stisla 2018
+                            Copyright &copy; Tugas Akhir Poltek Tegal <?= date('Y'); ?>
                         </div>
                     </div>
                 </div>

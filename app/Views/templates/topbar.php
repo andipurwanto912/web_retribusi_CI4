@@ -22,7 +22,7 @@
                     <a href="features-settings.html" class="dropdown-item has-icon">
                         <i class="fas fa-key"></i> Change Password
                     </a>
-                    <a href="#" class="dropdown-item has-icon text-danger" data-toggle="modal" data-target="#logoutModal">
+                    <a href="<?= base_url('logout'); ?> " class="dropdown-item has-icon text-danger" data-toggle="modal" data-target="#logoutModal">
                         <i class="fas fa-sign-out-alt"></i> Logout
                     </a>
                 </div>

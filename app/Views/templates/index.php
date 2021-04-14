@@ -67,7 +67,7 @@
                 <div class="modal-body">Anda yakin keluar?</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="http://localhost/TA_retribusi/auth/logout">Logout</a>
+                    <a class="btn btn-primary" href="<?= base_url('logout'); ?>">Logout</a>
                 </div>
             </div>
         </div>
