@@ -7,13 +7,24 @@
             <a href="index.html">RS</a>
         </div>
 
-        <!-- khusus admin management user -->
+        <!-- khusus admin -->
+        <!-- management user -->
         <?php if (in_groups('admin')) : ?>
             <ul class="sidebar-menu">
                 <li class="menu-header">Management User</li>
                 <!-- User Profile -->
                 <li class=""><a class="nav-link" href="<?= base_url('admin'); ?>"><i class="fas fa-users"></i>
                         <span>List User</span></a></li>
+            </ul>
+        <?php endif; ?>
+
+        <!-- management Data -->
+        <?php if (in_groups('admin')) : ?>
+            <ul class="sidebar-menu">
+                <li class="menu-header">Management Data</li>
+                <!-- User Profile -->
+                <li class=""><a class="nav-link" href="<?= base_url('admin'); ?>"><i class="fas fa-id-card"></i>
+                        <span>List Data</span></a></li>
             </ul>
         <?php endif; ?>
 
